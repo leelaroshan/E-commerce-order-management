@@ -1,0 +1,96 @@
+
+
+.login-wraper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+.login-container{
+
+
+  
+    background: white;
+    display: flex;
+    flex-direction: column;
+      justify-content: center;
+    align-items: center;
+
+    width: 420px;
+    height: 420px;
+    padding: 20px;
+    border-radius: 7px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.39);
+}
+
+.login-container h2{
+    text-align: center;
+    font-weight: 700;
+    font-size: 35px;
+    background: linear-gradient(90deg,#FF416C,#FF4B2B);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color:transparent;
+}
+.login-div select{
+    margin-top: 20px;
+}
+.login_form{
+    margin-top: 10px;
+}
+.field-inputs p{
+    color: red;
+    margin: 5px 5px;
+    font-size: 13px;
+    font-weight: 500;
+}
+.login_form .field-inputs{
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    height: 80px;
+}
+.login_form .field-input{
+    font-size: 15px;
+    padding: 0 10px;
+    height: 40px;
+    background: none;
+    outline: none;
+    border: none;
+    border-bottom: 2px rgba(0, 0, 0, 0.192) solid;
+}
+.field-inputs label{
+    font-size: 15px;
+    font-weight: 500;
+    color: rgb(44, 44, 44);
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+.log-in{
+    margin-top: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 70px;
+}
+
+.login_btn{
+    height: 50px;
+    border: none;
+    border-radius: 4px;
+    box-shadow: inset 0 0 0 0 yellow;
+    transition: ease-out 0.5s;
+    font-size: 20px;
+    outline: none;
+    color: white;
+    background: linear-gradient(90deg,#FF416C,#FF4B2B);
+}
+.login_btn:hover{
+    box-shadow: inset 350px 0 0 0 yellow;
+    color: black;
+    font-weight: 500;
+    cursor: pointer;
+} 

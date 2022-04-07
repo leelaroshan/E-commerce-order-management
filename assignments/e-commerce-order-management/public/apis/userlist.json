@@ -1,0 +1,40 @@
+{
+   "data" : [
+     {
+       "id": 1,
+       "email": "buyer1@gmail.com",
+       "password": "12345678",
+       "userrole": "buyer"
+     },
+     {
+       "id": 2,
+       "email": "sellerone@gmail.com",
+       "password": "12345678",
+       "userrole": "seller"
+     },
+     {
+       "id": 3,
+       "email": "buyer2@gmail.com",
+       "password": "12345678",
+       "userrole": "buyer"
+     },
+     {
+       "id": 4,
+       "email": "seller2@gmail.com",
+       "password": "12345678",
+       "userrole": "seller"
+     },
+     {
+       "id": 5,
+       "email": "buyer3@gmail.com",
+       "password": "12345678",
+       "userrole": "buyer"
+     },
+      {
+       "id": 6,
+       "email": "seller3@gmail.com",
+       "password": "12345678",
+       "userrole": "seller"
+     }
+   ] 
+}
