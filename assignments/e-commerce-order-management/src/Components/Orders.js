@@ -13,7 +13,7 @@ function Orders() {
 
   const [isAddFormOpen, setIsAddFormOpen] = useState(false);
 
-  const [viewProducts, setViewProducts] = useState(false);
+  const [viewProducts, setViewProducts] = useState(true);
   const [orders, setOrders] = useState([]);
   const [isDeleting, setISDeleting] = useState(false);
 
@@ -197,10 +197,15 @@ function Orders() {
       <AddModal isOpen={isAddFormOpen} onClose={() => closeAddModal()}>
         <p>Leela div here viertyi </p>
       </AddModal>
-
-      <button className="new-order-btn" onClick={handleViewProducts} style={{margin:'20px'}}>
-        View All Products
-      </button>
+      <div style={{display:'flex',flexDirection:'row', justifyContent:'center', alignItems:'center'}}>
+        <button
+          className="new-order-btn"
+          onClick={handleViewProducts}
+          style={{ margin: '20px' }}
+        >
+          View All Products
+        </button>
+      </div>
 
       {viewProducts ? <SellerProducts /> : ' '}
     </div>
