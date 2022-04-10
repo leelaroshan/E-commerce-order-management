@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getUsers } from '../store/users/UsersAction';
+import { v4 as uuid } from 'uuid';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
-export default function Login() {
-  const userList = useSelector((state) => state.usersDetails.userList);
 
-  console.log(userList);
-
+export default function Signin() {
+  const unique_id = uuid();
+  const small_id = unique_id.slice(0, 8);
   const dispatch = useDispatch();
   const [users, setUsers] = useState([]);
   const [login, setLogin] = useState({
     email: '',
     password: '',
-  
+    typeOfUser: '',
   });
   const [checkbox, setCheckbox] = useState(false);
-const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({});
   let navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -30,7 +30,7 @@ const [errors, setErrors] = useState({});
 
   const handleCheckbox = () => {
     setCheckbox(true);
-  }
+  };
   const loginSubmit = (e) => {
     e.preventDefault();
 
@@ -52,51 +52,80 @@ const [errors, setErrors] = useState({});
       } else if (login.password.length < 8) {
         err.password = 'Password needs to be 8 characters or more';
       }
+      if (!login.typeOfUser) {
+        err.typeOfUser = 'User type is required';
+      }
 
       return err;
     });
 
     console.log(login.email);
 
-    const result = userList[0].find((el, index) => {
-      return el.email === login.email;
-    });
+    // const result = userList[0].find((el, index) => {
+    //   return el.email === login.email;
+    // });
 
-    console.log(result);
+    // console.log(result);
 
-    if (result.email === login.email && result.password === login.password) {
-      localStorage.setItem('user_details', JSON.stringify(result));
-      console.log('clicked', login);
-    }
+    // if (result.email === login.email && result.password === login.password) {
+    //   localStorage.setItem('user_details', JSON.stringify(result));
+    //   console.log('clicked', login);
+    // }
 
-    const user = JSON.parse(localStorage.getItem('user_details'));
-    console.log(user);
+    // const user = JSON.parse(localStorage.getItem('user_details'));
+    // console.log(user);
 
-    
-    if (user.userrole === 'buyer') {
-      
+    let data = {
+      email: login.email,
+      password: login.password,
+      userrole: login.typeOfUser,
+      id: small_id,
+    };
+
+    setUsers([...users, data]);
+
+    if (data.userrole === 'buyer') {
+       Swal.fire({
+         title: ` Buyer successfully   logged in`,
+       })
       navigate('/products');
-    } else if (user.userrole === 'seller') {
+    } else if (data.userrole === 'seller') {
+       Swal.fire({
+         title: ` Seller successfully   logged in`,
+       });
       navigate('/orders');
     } else {
+      Swal.fire({
+        title: `Please Enter Credentials`,
+      });
       navigate('/');
     }
   };
 
-  useEffect(() => {
-    dispatch(getUsers());
-    setUsers(userList);
-  }, []);
+  //   useEffect(() => {
+  //     dispatch(getUsers());
+  //     setUsers(userList);
+  //   }, []);
 
   return (
     <div className="login-wraper">
       <div className="login-container">
         {/* <form onSubmit={loginSubmit} className="login_form"> */}
-        <h2> Login </h2>
+        <h2> Signin </h2>
 
         <div className="login-div">
-         
-
+          <div class="mb-3" style={{ marginBottom: '40px' }}>
+            <select
+              name="typeOfUser"
+              class="form-control form-control-lg"
+              value={login.typeOfUser}
+              onChange={handleChange}
+            >
+              <option>select</option>
+              <option value="seller">seller</option>
+              <option value="buyer">buyer</option>
+            </select>
+          </div>
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">
               Email Id
@@ -146,7 +175,7 @@ const [errors, setErrors] = useState({});
           <br />
         </div>
         <div className="log-in">
-          {login.email && login.password && checkbox ? (
+          {login.email && login.password && login.typeOfUser ? (
             <button type="submit" className="login_btn" onClick={loginSubmit}>
               Log In
             </button>

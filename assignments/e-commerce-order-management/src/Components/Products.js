@@ -72,7 +72,7 @@ function Products() {
               <p> {el.description}</p>
               <p> Price:${el.price}</p>
               <p>seller:{el.seller}</p>
-              <Link to={`/product/${el.productid}`}><button className='add-to-cart-btn'>Add to Cart</button></Link>
+              <Link to={`/product/${index}`}><button className='add-to-cart-btn'>Add to Cart</button></Link>
             </div>
           ))}
       </div>

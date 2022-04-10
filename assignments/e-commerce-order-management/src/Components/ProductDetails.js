@@ -52,9 +52,12 @@ const products = [
 
 
 function ProductDetails() {
+
 const {productId} = useParams();
 
   const [openModal, setOpenModal] = useState(false);
+  const [orderModalOpen, setOrderModalOpen] = useState(false);
+
   console.log(productId);
 
    const id = products.find((el, index) => {
@@ -65,41 +68,64 @@ const {productId} = useParams();
 
 
    const onOpenOrderModal = () => {
-     setOpenModal(true);
+     setOrderModalOpen(true);
      
      console.log('edit show modal clicked');
    };
 
    const onCloseOrderModal = () => {
-     setOpenModal(false);
+     setOrderModalOpen(false);
 
      console.log('hide edit modal clicked');
    };
 
   
   return (
-    <div className='product-detail-wrapper'>
-      <h3 style={{textAlign:'center'}}> ProductDetails</h3>
+    <div className="product-detail-wrapper">
+      <h3 style={{ textAlign: 'center' }}> ProductDetails</h3>
       {products[productId] && (
         <div className="detail-div">
           <div className="left-div">
             <img src={products[productId].imgurl} className="detail-img" />
           </div>
           <div className="right-div">
-            <p>Product Name: {products[productId].productname}</p>
-            <p>Seller: {products[productId].seller}</p>
-            <p>Price: {products[productId].price}</p>
+            <p style={{ fontSize: '40px' }}>
+              {' '}
+              {products[productId].productname}
+            </p>
+            <p>Price: ${products[productId].price}</p>
             <p>Description: {products[productId].description}</p>
-            <p>Rating: 4.5(234 reviews)</p>
 
-            <button onClick={onOpenOrderModal}>Place order</button>
+            <div>
+              <p style={{ color: 'darkred', fontSize: '30px' }}>
+                Product Details
+              </p>
+              What more can we say? It's the Snopes logo, front and center on a
+              shirt that comes in many delightful colors. Good luck choosing
+              just one. Logo is outlined in white. • 100% combed and ring-spun
+              cotton (heather colors contain polyester) • Fabric weight: 4.2 oz
+              (142 g/m2) • Shoulder-to-shoulder taping • Side-seamed Size guide
+            </div>
+            <p>Rating: 4.5(234 reviews)</p>
+            <div style={{ color: 'green' }}>
+              <p style={{ color: 'darkgreen', fontSize: '30px' }}>
+                Seller Details
+              </p>
+              <p style={{ fontSize: '20px' }}>
+                Seller: {products[productId].seller}
+              </p>
+            </div>
+
+            <button onClick={onOpenOrderModal} className="place-order-btn">
+              Place order
+            </button>
           </div>
         </div>
       )}
-
-      <div className="order-modal-contanier">
+<OrderModal isOpen={orderModalOpen} onClose={()=> onCloseOrderModal()} ></OrderModal>
+      {/* <div className="order-modal-contanier">
         {openModal ? <OrderModal onCloseOrderModal={onCloseOrderModal} /> : ''}
-      </div>
+      </div> */}
     </div>
   );
 }

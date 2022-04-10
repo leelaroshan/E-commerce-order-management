@@ -1,4 +1,17 @@
 
+.navbar-container{
+    background-color: lightblue;
+    color: black;
+    padding: 2%;
+}
+
+
+
+
+
+
+
+
 
 .login-wraper{
     display: flex;
@@ -11,30 +24,39 @@
 
 
 .login-container{
-
-
-  
     background: white;
     display: flex;
     flex-direction: column;
       justify-content: center;
     align-items: center;
 
-    width: 420px;
-    height: 420px;
+    width: 60%;
+    height: 50%;
     padding: 20px;
     border-radius: 7px;
+    margin-top: 10%;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.39);
 }
+
+
 
 .login-container h2{
     text-align: center;
     font-weight: 700;
     font-size: 35px;
+    margin:20px 0px;
     background: linear-gradient(90deg,#FF416C,#FF4B2B);
     -webkit-background-clip: text;
     -webkit-text-fill-color:transparent;
 }
+
+.login-div{
+
+    width: 50%;
+
+}
+
+
 .login-div select{
     margin-top: 20px;
 }

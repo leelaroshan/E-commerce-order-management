@@ -6,7 +6,10 @@ function Navbar() {
 
 
   return (
-    <div>
+    <div className='navbar-container'>
+
+      <h2 style={{textAlign:'center'}}>E-Commerce Order Management System</h2>
+
 {role === 'seller' ? (
     <div>
 
